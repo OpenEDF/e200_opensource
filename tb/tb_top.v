@@ -1,4 +1,3 @@
-
 `include "e200_defines.v"
 
 module tb_top();
@@ -120,7 +119,6 @@ module tb_top();
                         ;
   end
 
-
   initial begin
     #100
     @(pc == `PC_AFTER_SETMTVEC ) // Wait the program goes out the reset_vector program
@@ -236,21 +234,14 @@ module tb_top();
   begin 
      #33 lfextclk <= ~lfextclk;
   end
-
-
-
-  
   
   initial begin
     $value$plusargs("DUMPWAVE=%d",dumpwave);
     if(dumpwave != 0)begin
-         // To add your waveform generation function
+        $fsdbDumpfile("ware.fsdb");
+        $fsdbDumpvars("+all");
     end
   end
-
-
-
-
 
   integer i;
 
@@ -282,8 +273,6 @@ module tb_top();
 
     end 
 
-
-
   wire jtag_TDI = 1'b0;
   wire jtag_TDO;
   wire jtag_TCK = 1'b0;
@@ -291,7 +280,6 @@ module tb_top();
   wire jtag_TRST = 1'b0;
 
   wire jtag_DRV_TDO = 1'b0;
-
 
 e200_soc_top u_e200_soc_top(
    

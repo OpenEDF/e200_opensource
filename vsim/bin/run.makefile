@@ -13,15 +13,17 @@ TB_V_FILES		:= $(wildcard ${VTB_DIR}/*.v)
 
 SIM_TOOL      := vcs
 SIM_OPTIONS   := -timescale=1ns/1ns \
-                 -fsdb \
                  -full64 \
                  +vc +v2k \
                  -sverilog  \
-                 -debug_all \
+                 -debug_acc+all \
+                 -debug_region+cell+encrypt \
+                 +warn=noVPI-CT-NS \
                  -cpp g++-4.8 \
-                 -cc  gcc-4.8 \
-				 -LDFLAGS -Wl,--no-as-needed  \
-                 -P ${LD_LIBRARY_PATH}/novas.tab ${LD_LIBRARY_PATH}/pli.a -load libnovas.so:FSDBDumpCmd \
+                 -cc gcc-4.8  \
+                 -LDFLAGS -Wl,--no-as-needed  \
+                 -P ${LD_LIBRARY_PATH}/novas.tab ${LD_LIBRARY_PATH}/pli.a \
+                 -load libnovas.so:FSDBDumpCmd \
                  +incdir+${VSRC_DIR}/core/+${VSRC_DIR}/perips/ \
                  -l vcs.log \
 

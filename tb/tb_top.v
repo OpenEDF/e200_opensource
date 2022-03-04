@@ -168,7 +168,7 @@ module tb_top();
   initial begin
     $display("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");  
     if($value$plusargs("TESTCASE=%s",testcase))begin
-      $display("TESTCASE=%s",testcase);
+      $display("TESTCASE=%0s",testcase);
     end
 
     pc_write_to_host_flag <=0;
@@ -187,7 +187,7 @@ module tb_top();
         $display("~~~~~~~~~~~~~ Test Result Summary ~~~~~~~~~~~~~~~~~~~~~~");
         $display("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         $display("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        $display("~TESTCASE: %s ~~~~~~~~~~~~~", testcase);
+        $display("~TESTCASE: %0s ~~~~~~~~~~~~~", testcase);
         $display("~~~~~~~~~~~~~~Total cycle_count value: %d ~~~~~~~~~~~~~", cycle_count);
         $display("~~~~~~~~~~The valid Instruction Count: %d ~~~~~~~~~~~~~", valid_ir_cycle);
         $display("~~~~~The test ending reached at cycle: %d ~~~~~~~~~~~~~", pc_write_to_host_cycle);

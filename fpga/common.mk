@@ -10,11 +10,7 @@
 CORE = e203
 PATCHVERILOG ?= ""
 
-
-
 base_dir := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
-
-
 
 # Install RTLs
 install: 
@@ -28,26 +24,19 @@ EXTRA_FPGA_VSRCS :=
 verilog := $(wildcard ${INSTALL_RTL}/*/*.v)
 verilog += $(wildcard ${INSTALL_RTL}/*.v)
 
-
 # Build .mcs
 .PHONY: mcs
 mcs : install
 	BASEDIR=${base_dir} VSRCS="$(verilog)" EXTRA_VSRCS="$(EXTRA_FPGA_VSRCS)" $(MAKE) -C $(FPGA_DIR) mcs
-
 
 # Build .bit
 .PHONY: bit
 bit : install
 	BASEDIR=${base_dir} VSRCS="$(verilog)" EXTRA_VSRCS="$(EXTRA_FPGA_VSRCS)" $(MAKE) -C $(FPGA_DIR) bit
 
-
 .PHONY: setup
 setup: 
 	BASEDIR=${base_dir} VSRCS="$(verilog)" EXTRA_VSRCS="$(EXTRA_FPGA_VSRCS)" $(MAKE) -C $(FPGA_DIR) setup
-
-
-
-
 
 # Clean
 .PHONY: clean
@@ -57,4 +46,3 @@ clean:
 	rm -rf install
 	rm -rf vivado.*
 	rm -rf novas.*
-

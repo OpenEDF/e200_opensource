@@ -1222,7 +1222,7 @@ module system
 
     .io_pads_aon_pmu_padrst_o_oval    (dut_io_pads_aon_pmu_padrst_o_oval ),
 
-    .io_pads_bootrom_n_i_ival       (dut_io_pads_bootrom_n_i_ival),
+    .io_pads_bootrom_n_i_ival        (dut_io_pads_bootrom_n_i_ival),
 
     .io_pads_dbgmode0_n_i_ival       (dut_io_pads_dbgmode0_n_i_ival),
     .io_pads_dbgmode1_n_i_ival       (dut_io_pads_dbgmode1_n_i_ival),

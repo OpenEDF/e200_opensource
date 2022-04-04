@@ -236,10 +236,10 @@ module tb_top();
   end
   
   initial begin
-    $value$plusargs("DUMPWAVE=%d",dumpwave);
+    $value$plusargs("DUMPWAVE=%d", dumpwave);
     if(dumpwave != 0)begin
-        $fsdbDumpfile("ware.fsdb");
-        $fsdbDumpvars("+all");
+        $fsdbDumpfile("wave.fsdb");
+        $fsdbDumpvars(0, "tb_top");
     end
   end
 

@@ -25,7 +25,7 @@ SIM_OPTIONS   := -timescale=1ns/1ns \
                  -P ${LD_LIBRARY_PATH}/novas.tab ${LD_LIBRARY_PATH}/pli.a \
                  -load libnovas.so:FSDBDumpCmd \
                  +incdir+${VSRC_DIR}/core/+${VSRC_DIR}/perips/ \
-                 -l vcs.log \
+                 -l vcs.log
 
 # This is a free solution here to use iverilog to compile the code. Please NOTE!!!!
 #
@@ -42,9 +42,9 @@ SIM_OPTIONS   := -timescale=1ns/1ns \
 #           If you want to turn on them without caring the the regression speed,
 #           you can just add macro `ENABLE_TB_FORCE` here in command line.
 
-SIM_EXEC      := ../simv
+SIM_EXEC      := ../simv +fsdb+autoflush
 WAV_TOOL      := verdi
-WAV_OPTIONS   := -2001 -sv -top tb_top \
+WAV_OPTIONS   := -2001 -sv -top tb_top -ssf ${TESTNAME}/wave.fsdb -nologo \
                  +incdir+${VSRC_DIR}/core/+${VSRC_DIR}/perips/
 
 all: run
